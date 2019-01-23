@@ -1,138 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Adaptation Pathways</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <title>Adaptation to Ocean Acidification</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/larvae.ico" type="image/x-icon">
 
-  <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+     <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="dist/storymap.2.4.css">
+    <link rel="stylesheet" href="css/main.css">
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+    <script src="https://cdn.bootcss.com/chroma-js/1.3.3/chroma.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+    <script src="dist/storymap.2.4.js"></script>
 
 </head>
 
 <body>
 
-<!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <!--Navbar Title-->
-    <a class="navbar-brand" href="index.html">Adaptation Pathways for Shellfish Stakeholders Facing Ocean Acidification</a>
-    <!--Navbar Toggler-->
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!--Navbar Items-->
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <!--About-->
-        <li class="nav-item">
-          <a class="nav-link" href="#" target="_self">TBD</a>
-        </li>
-        <!--Other Pages dropdown-->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Other Pages
-          </a>
-          <!--other pages dropdown items-->
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog2">
-            <a class="dropdown-item" href="#" target="_self">TBD</a>
-            <a class="dropdown-item" href="#" target="_self">TBD</a>
-            <a class="dropdown-item" href="#" target="_self">TBD</a>
-            <a class="dropdown-item" href="#" target="_self">TBD</a>
-            <a class="dropdown-item" href="#" target="_self">TBD</a>
-          </div>
-        </li>
-      </ul>
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark storymap-navbar" style="text-align: center;">
+    <a class="navbar-brand" href="https://adapt-oa.github.io/adaptation/">
+        <img src="http://via.placeholder.com/24" class="d-inline-block align-top img-responsive">
+    </a>
+    <div class="ml-auto">
+        <a id="nav-title">Adaptation to Ocean Acidification</a>
     </div>
-  </div>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto"></ul>
+    </div>
 </nav>
 
-<header>
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-      <!--Slide One: Vulnerability-->
-      <div class="carousel-item active" style="background-image: url('img/oysters.jpg')">
-          <div class="carousel-caption d-none d-md-block">
-          <!--slide one title-->
-          <div class="row">
-            <div class="col-2"></div>
-              <div class="col-8"><h3>Vulnerability</h3></div>
-            <div class="col-2"></div>
-          </div>
-          <!--slide one subtitle-->
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="col-8">
-              <div class="row">
-                <div class="col-4 text-right"><p>Exposure</p></div>
-                <div class="col-4"><p>Sensitivity</p></div>
-                <div class="col-4 text-left"><p>Adaptive Capacity</p></div>
-              </div>
+<div id="storymap" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 storymap-story">
+
+            <!--Title-->
+            <section data-scene="overview" data-background="assets/whiskey.mp4">
+                <div class="fullscreen text-center">
+                    <h1 class="display-4 d-flex justify-content-center">Adaptation to Ocean Acidification</h1>
+                    <h3 class="display-4 d-flex justify-content-center"><small><small>Case study of successful adaptation:<br>Whiskey Creek Shellfish Hatchery</small></small></h3>
+                </div>
+            </section>
+
+            <!--Scene 1-->
+            <section data-scene="whiskey" class="container-fluid">
+                <h2 class="text-center">Whiskey Creek</h2>
+                <br>
+                <img src="img/cape_lookout.png" class="img-responsive img-thumbnail" alt="Cape Lookout">
+                <br>
+                <p>Whiskey Creek Shellfish Hatchery is located in Netarts Bay, Oregon. The water in this environment is especially favorable to shellfish growth because no major rivers feed into the bay.</p>
+                <br>
+                <img src="img/netarts.png" class="img-responsive img-thumbnail" alt="Netarts Bay pump">
+                <br>
+                <p>Water from Netarts Bay is directly pumped into the hatchery where fertilized eggs of shellfish (e.g. oysters and mussels) are grown into larval "seed" for both commercial and restoration purposes.<sup><small><sup>1</sup></small></sup></p>
+                <br>
+                <video controls autoplay loop class="embeded-photo img-responsive img-thumbnail">
+                    <source src="img/seed.mp4" type="video/mp4">
+                </video>
+                <br>
+                <p>Once grown, shellfish seed is filtered through a screen to separate the larvae by size.</p>
+            </section>
+
+            <!--Scene 2-->
+            <section data-scene="network">
+                <h2 class="text-center">Importance to Network</h2>
+                <br>
+                <p>Whiskey Creek is the largest shellfish hatchery in the United States and produces nearly 70% of the seed used by independent shellfish growers in the Pacific Northwest.</p>
+                <video controls autoplay loop width="500px" class="embeded-photo img-responsive img-thumbnail"><source src="img/oyster_bags.mp4" type="video/mp4"/></video>
+                <br>
+                <p>The Pacific Northwest shellfish industry supports thousands of people's livelihoods and contributes nearly $270 million per year to the regional economy.<sup><small><sup>2</sup></small></sup> Many indigenous tribes across the PNW also place cultural value on shellfish, and have done so for millennia.</p>
+                <div class="navbar-legend">
+                    <p class="text-center" style="font-size:22px;"><b>Shellfish Stakeholders</b></p>
+                    <div class="row">
+                        <i class="fas fa-database navbar-legend-row marker-color-1"></i><span>Hatchery</span>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <i class="fab fa-pagelines navbar-legend-row marker-color-1" style="padding-right: 17px;"></i><span>Grower</span>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <i class="fas fa-leaf navbar-legend-row marker-color-1" style="padding-right: 12px;"></i><span>Tribe</span>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <i class="fas fa-industry navbar-legend-row marker-color-1"></i><span>Processor</span>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <i class="fas fa-shipping-fast navbar-legend-row marker-color-1" style="padding-right: 11px;"></i><span>Distributor</span>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <i class="fas fa-exchange-alt navbar-legend-row marker-color-1"></i><span>Retailer</span>
+                    </div>
+                    <br>
+                </div>
+            </section>
+
+            <!--Scene 3-->
+            <section data-scene="seed">
+                <h2 class="text-center">Oyster Seed Crisis</h2>
+                <br>
+                <p>In the summer of 2007, Whiskey Creek Shellfish Hatchery experienced an unexpected loss of nearly 75% of their larvae due to a period of extreme OA. This sudden seed shortage had reverberating consequences for the regional network of shellfish stakeholders who depended on the seed produced by Whiskey Creek.</p>
+                <br>
+                <p>Researchers at Oregon State University began working closely with stakeholders at Whiskey Creek to assess the biological sensitivity of oyster larvae to OA and monitor estuarine water chemistry in real-time.</p>
+                <img src="img/larvae.png" class="img-responsive img-thumbnail" alt="oyster larvae">
+                <p class="caption">Damage to oyster larvae from acidified water (right) compared to healthy larvae (left).</p>
+                <p class="caption">Micrograph by <a href="https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1002/grl.50449">Oregon State University</a></p>
+                <br>
+            </section>
+
+            <!--Scene 4-->
+            <section data-scene="adaptation">
+                <h2 class="text-center">Adaptive Capacity</h2>
+                <br>
+                <p>The seed crisis prompted urgent legislative action across the PNW, and new assets were unlocked for the purpose of combating continued OA risk.</p>
+                <br>
+                <p>Across the region, new scientific research and technologies were invested in by a number of federal, state, and local agencies.</p>
+                <p class="text-center"><b>Burkalator</b></p>
+                <img class="embeded-photo img-responsive img-thumbnail" src="img/inside_burkalator.png"/>
+                <br><br>
+                <p class="text-center"><b>pH sensor</b></p>
+                <img class="embeded-photo img-responsive img-thumbnail" src="img/ph_sensor.png"/>
+                <br><br>
+                <p class="text-center"><b>Buffer</b></p>
+                <img class="embeded-photo img-responsive img-thumbnail" src="img/buffer.png"/>
+                <br><br>
+                <p class="text-center"><b>Buffered Water Pump</b></p>
+                <img class="embeded-photo img-responsive img-thumbnail" src="img/buffer_pump.png"/>
+                <br><br>
+                <p class="text-center"><b>CO<sub>2</sub> sensor</b></p>
+                <video controls autoplay loop width="500px" class="embeded-photo img-responsive img-thumbnail">
+                    <source src="img/co2_sensor.mp4" type="video/mp4"/>
+                </video>
+                <br><br>
+                <div class="navbar-legend">
+                    <p class="text-left"><b>Funding Agencies</b></p>
+                    <div class="row">
+                        <i class="fas fa-flask navbar-legend-row2 marker-color2-1"></i><span>NOAA</span>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <i class="fas fa-flask navbar-legend-row2 marker-color2-2"></i><span>National Science Foundation</span>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <i class="fas fa-flask navbar-legend-row2 marker-color2-3"></i><span>Environmental Protection Agency</span>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <i class="fas fa-flask navbar-legend-row2 marker-color2-4"></i><span>Oregon State General Fund</span>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <i class="fas fa-flask navbar-legend-row2 marker-color2-5"></i><span>Bonneville Power Administration</span>
+                    </div>
+                    <br>
+                </div>
+            </section>
+
+            <!--Scene 5-->
+            <section data-scene="success">
+                <h2 class="text-center">Post-Adaptation Success</h2>
+                <br>
+                <p>In the last few years, Whiskey Creek has been able to return their seed production to levels unseen since before the seed crisis of the late 2000s.</p>
+                <br>
+                <img class="embeded-photo img-responsive img-thumbnail" src="img/algae_rack.png"/>
+                <br><br>
+                <p>Whiskey Creek Shellfish Hatchery is a shining example of how stakeholders faced with high exposure to ocean acidification can still overcome potential harm by following an adaptation pathway.</p>
+            </section>
+
+            <!--End-->
+            <section data-scene="end" data-background="img/tanks.png">
+                <div class="fullscreen text-center">
+                    <h4 class="display-4 d-flex justify-content-center"><small><small>Regional Vulnerability Assessment:</small></small></h4>
+                    <div class="row mx-auto text-center">
+                        <div class="col-md-4 col-lg-4 map"></div>
+                        <div class="col-md-4 col-lg-4 map">
+                            <img src="img/pnw.png" class="image">
+                            <a href="../vulnerability/pnw">
+                                <div class="overlay">
+                                <div class="text">
+                                    <h3>Pacific Northwest</h3>
+                                    <p>Salish Sea to Humboldt Bay</p>
+                                </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-lg-4 map"></div>
+                    </div>
+                    <h3 class="attribution">Created by Brian Katz &#183; Oregon State University &#183; 2019</h3>
+                </div>
+            </section>
+
+        </div>
+
+        <!--Map div-->
+        <div class="col-sm-6 col-md-8 storymap-map"></div>
+    </div>
+
+    <dl>
+        <dt>
+            <!--Map icon-->
+            <a class="far fa-map btn"
+               href="../vulnerability/pnw"
+               style="top:5px;left:0"
+               target="_self"></a>
+        </dt>
+        <dt>
+            <!--Facebook icon-->
+            <a class="fab fa-facebook-square btn"
+               href="https://www.facebook.com/sharer/sharer.php?u=https%3A//adapt-oa.github.io/adaptation/"
+               style="top:30px;left:0"
+               target="_self"></a>
+        </dt>
+        <dt>
+            <!--Twitter icon-->
+            <a class="fab fa-twitter-square btn"
+               href="https://twitter.com/home?status=https%3A//adapt-oa.github.io/adaptation/"
+               style="top:55px;left:0"
+               target="_self"></a>
+        </dt>
+        <dt>
+            <!--GitHub icon-->
+            <a class="fab fa-git-square btn" href="https://github.com/adapt-oa/adaptation/" style="top:80px;left:0"
+               target="_self"></a>
+        </dt>
+        <dt>
+            <!--Info modal icon-->
+            <i class="fas fa-file-alt btn" style="top:105px;left:0" data-toggle="modal" data-target="#info-modal"></i>
+        </dt>
+    </dl>
+
+    <!--Info modal page-->
+    <div class="modal fade" id="info-modal" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h2 class="modal-title" style="position: absolute; left: 43%; top: 8px;">About</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h2><small><small>This story map describes a case study of successful adaptation to ocean acidification by Whiskey Creek Shellfish Hatchery in Netarts, Oregon.</small></small></h2>
+                    <br>
+                    <h2><small><small>Data Sources:</small></small></h2>
+                    <ol>
+                        <li>
+                            Shellfish stakeholder data was obtained from the <a href="https://pcsga.org/search-our-growers/" target="_blank">Pacific Shellfish Growers Association (PCSGA</a>), <a href="https://www.accessdata.fda.gov/scripts/shellfish/sh/shellfish.cfm/" target="_blank">US FDA Office of Food Safety</a>, <a href="https://www.doh.wa.gov/Portals/1/Documents/Pubs/332-104.pdf/" target="_blank">Washington State Department of Health</a>, and <a href="http://www.oregon.gov/oda/programs/foodsafety/fslicensing/pages/commercialshellfish.aspx/" target="_blank">Oregon Department of Agriculture</a>.
+                        </li>
+                        <li>
+                            Funded OA projects data acquired from the <a href="https://www.dfw.state.or.us/" target="_blank">Oregon Department of Fish and Wildlife</a>.
+                        </li>
+                    </ol>
+                    <h2><small><small>References:</small></small></h2>
+                <ol>
+                    <li>
+                        <a href="http://www.pacshell.org/oregon.asp" target="_blank">Pacific Shellfish Institute</a>
+                    </li>
+                    <li>
+                        <a href="http://www.westcoast.fisheries.noaa.gov/aquaculture/commercial__shellfish_aquaculture.html" target="_blank">NOAA Fisheries</a>
+                    </li>
+                </ol>
+                    <h2><small><small>Attributions:</small></small></h2>
+                    <ul>
+                        <li><a href="https://github.com/jakobzhao/storymap/">storymap.js</a> | Released Date: 02/20/2017 | Version: 2.3 | MIT License</li>
+                        <li>This story map uses the <a href="https://tinyurl.com/y9ahmdfd/" target="_blank">Shellfish style</a> base map built with <a href="https://www.mapbox.com/">Mapbox</a>.</li>
+                        <li>Whiskey Creek hatchery photos and videos by: Brian Katz and David Wrathall</li>
+                        <li>Oyster larvae favicon and front page video editing: Ginny Katz</li>
+                    </ul>
+
+                    <h2><small><small>Author: Brian G. Katz</small></small></h2>
+                    <p><a href="https://www.ceoas.oregonstate.edu/">College of Earth, Ocean, and Atmospheric Sciences</a> | <a href="https://www.oregonstate.edu/">Oregon State University</a></p>
+                </div>
             </div>
-            <div class="col-2"></div>
-          </div>
-        </div>
-      </div>
-      <!--Slide Two: Adaptation Pathways-->
-      <div class="carousel-item" style="background-image: url('img/whiskey.jpg')">
-        <div class="carousel-caption d-none d-md-block">
-          <!--slide two title-->
-            <h3>Adaptation</h3>
-          <!--slide two subtitle-->
-          <p>Navigating around vulnerability</p>
-        </div>
-      </div>
-      <!--Slide Three: Fieldwork-->
-        <div class="carousel-item" style="background-image: url('img/fieldwork.png')">
-          <div class="carousel-caption d-none d-md-block">
-              <!--slide three title-->
-              <h3>Fieldwork</h3>
-              <!--slide three subtitle-->
-              <p>Surveying shellfish stakeholders at the global frontline of OA</p>
-          </div>
         </div>
     </div>
-      <!--Prev/Next Slide Arrows-->
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</header>
+</div>
 
-<!-- Page Content -->
-<div class="container">
-    <!--Page Title-->
-    <h1 class="my-4">Paving a Path for Shellfish Stakeholders to Adapt to Ocean Acidification</h1>
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-  <div class="container">
-    <p class="m-0 text-center text-white">Made by Brian G. Katz - Oregon State University - 2019</p>
-  </div>
-  <!-- /.container -->
-</footer>
-
+<!-- Main JavaScript -->
+<script type="text/javascript" src="js/main.js"></script>
 
 </body>
 
